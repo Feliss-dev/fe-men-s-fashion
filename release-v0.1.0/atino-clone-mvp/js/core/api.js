@@ -2,7 +2,10 @@
  * API Module - Wrapper for fetching data from mock JSON server
  */
 
-const API_BASE = 'http://localhost:3000';
+const API_BASE =
+  location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://694e5e99b5bc648a93c0239f.mockapi.io/ap1/v1";
 
 /**
  * Normalize image paths - convert relative paths to absolute
@@ -10,30 +13,36 @@ const API_BASE = 'http://localhost:3000';
  * @returns {string} Normalized image path relative to index.html
  */
 function normalizeImagePath(imagePath) {
-  if (!imagePath) return '';
-  
-  // Nếu đã là URL đầy đủ, giữ nguyên
-  if (imagePath.startsWith('http')) {
+  if (!imagePath) return "";
+
+  // If API already returns a full URL or an object with url
+  if (typeof imagePath === "object" && imagePath.url) {
+    return imagePath.url;
+  }
+  if (typeof imagePath === "string" && imagePath.startsWith("http")) {
     return imagePath;
   }
-  
-  // Nếu là assets/..., giữ nguyên (already relative to index.html)
-  if (imagePath.startsWith('assets/')) {
-    return imagePath;
+
+  // If API returns relative path that already points to assets
+  if (
+    typeof imagePath === "string" &&
+    (imagePath.startsWith("assets/") || imagePath.startsWith("/assets/"))
+  ) {
+    return imagePath.replace(/^\/+/, "");
   }
-  
-  // Nếu là /assets/..., loại bỏ slash ở đầu
-  if (imagePath.startsWith('/assets/')) {
-    return imagePath.substring(1);
+
+  // If API returns only filename (e.g. "prod-01.jpg"), map to local assets folder
+  if (typeof imagePath === "string" && !imagePath.includes("/")) {
+    return `assets/images/${imagePath}`;
   }
-  
-  // Nếu chỉ có tên file, thêm folder path
-  if (!imagePath.includes('/')) {
-    return 'assets/images/' + imagePath;
+
+  // If API returns subpath like "products/prod-01.jpg", map to images root
+  if (typeof imagePath === "string") {
+    const name = imagePath.split("/").pop();
+    return `assets/images/${name}`;
   }
-  
-  // Default return as is
-  return imagePath;
+
+  return "";
 }
 
 /**
