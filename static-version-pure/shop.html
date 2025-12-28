@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cửa Hàng - Urban Gent (Static)</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <!-- Header (giống index.html) -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="Urban Gent Logo" class="logo-image">
+                <span class="logo-text">Urban Gent</span>
+            </a>
+            <nav id="mainNav">
+                <a href="index.html" class="nav-link">Trang chủ</a>
+                <a href="shop.html" class="nav-link">Cửa hàng</a>
+                <a href="about.html" class="nav-link">Giới thiệu</a>
+                <a href="contact.html" class="nav-link">Liên hệ</a>
+            </nav>
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button>🔍</button>
+                </div>
+                <button class="cart-icon">
+                    🛒
+                    <span class="badge">3</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="shop-wrapper">
+                <!-- Sidebar Filters -->
+                <aside class="shop-sidebar">
+                    <h3>Bộ Lọc</h3>
+
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <h4>Danh mục</h4>
+                        <label>
+                            <input type="checkbox" checked> Áo
+                        </label>
+                        <label>
+                            <input type="checkbox"> Quần
+                        </label>
+                        <label>
+                            <input type="checkbox"> Phụ kiện
+                        </label>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="filter-group">
+                        <h4>Giá</h4>
+                        <label>
+                            <input type="checkbox"> Dưới 200k
+                        </label>
+                        <label>
+                            <input type="checkbox"> 200k - 500k
+                        </label>
+                        <label>
+                            <input type="checkbox"> 500k - 1m
+                        </label>
+                        <label>
+                            <input type="checkbox"> Trên 1m
+                        </label>
+                    </div>
+
+                    <!-- Status Filter -->
+                    <div class="filter-group">
+                        <h4>Tình trạng</h4>
+                        <label>
+                            <input type="checkbox"> Giảm giá
+                        </label>
+                        <label>
+                            <input type="checkbox"> Hàng mới
+                        </label>
+                        <label>
+                            <input type="checkbox"> Bán chạy
+                        </label>
+                    </div>
+
+                    <button class="btn btn-secondary" style="width: 100%;">Xóa bộ lọc</button>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="shop-products">
+                    <div class="product-grid">
+                        <!-- Product Card 1 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+1"
+                                    alt="Sản phẩm 1">
+                                <span class="discount-badge">-20%</span>
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Áo Thun Basic Trơn Màu</h4>
+                                <p class="product-description">Cotton 100%, thoáng mát</p>
+                                <div class="product-price">
+                                    <span class="price-current">159.000 ₫</span>
+                                    <span class="price-original">199.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+2"
+                                    alt="Sản phẩm 2">
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Áo Sơ Mi Dài Tay Oxford</h4>
+                                <p class="product-description">Chất liệu Oxford cao cấp</p>
+                                <div class="product-price">
+                                    <span class="price-current">299.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+3"
+                                    alt="Sản phẩm 3">
+                                <span class="discount-badge">New</span>
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Áo Polo Cotton Pique</h4>
+                                <p class="product-description">Form regular fit thoải mái</p>
+                                <div class="product-price">
+                                    <span class="price-current">249.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+4"
+                                    alt="Sản phẩm 4">
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Quần Jeans Slimfit Xanh</h4>
+                                <p class="product-description">Denim cao cấp co giãn</p>
+                                <div class="product-price">
+                                    <span class="price-current">399.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 5 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+5"
+                                    alt="Sản phẩm 5">
+                                <span class="discount-badge">-15%</span>
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Quần Kaki Công Sở</h4>
+                                <p class="product-description">Form straight chuẩn</p>
+                                <div class="product-price">
+                                    <span class="price-current">339.000 ₫</span>
+                                    <span class="price-original">399.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 6 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+6"
+                                    alt="Sản phẩm 6">
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Quần Short Thể Thao</h4>
+                                <p class="product-description">Vải mềm mại, thoáng khí</p>
+                                <div class="product-price">
+                                    <span class="price-current">199.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Card 1 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+1"
+                                    alt="Sản phẩm 1">
+                                <span class="discount-badge">-20%</span>
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Áo Thun Basic Trơn Màu</h4>
+                                <p class="product-description">Cotton 100%, thoáng mát</p>
+                                <div class="product-price">
+                                    <span class="price-current">159.000 ₫</span>
+                                    <span class="price-original">199.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+2"
+                                    alt="Sản phẩm 2">
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Áo Sơ Mi Dài Tay Oxford</h4>
+                                <p class="product-description">Chất liệu Oxford cao cấp</p>
+                                <div class="product-price">
+                                    <span class="price-current">299.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+3"
+                                    alt="Sản phẩm 3">
+                                <span class="discount-badge">New</span>
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Áo Polo Cotton Pique</h4>
+                                <p class="product-description">Form regular fit thoải mái</p>
+                                <div class="product-price">
+                                    <span class="price-current">249.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+4"
+                                    alt="Sản phẩm 4">
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Quần Jeans Slimfit Xanh</h4>
+                                <p class="product-description">Denim cao cấp co giãn</p>
+                                <div class="product-price">
+                                    <span class="price-current">399.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 5 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+5"
+                                    alt="Sản phẩm 5">
+                                <span class="discount-badge">-15%</span>
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Quần Kaki Công Sở</h4>
+                                <p class="product-description">Form straight chuẩn</p>
+                                <div class="product-price">
+                                    <span class="price-current">339.000 ₫</span>
+                                    <span class="price-original">399.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 6 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+6"
+                                    alt="Sản phẩm 6">
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Quần Short Thể Thao</h4>
+                                <p class="product-description">Vải mềm mại, thoáng khí</p>
+                                <div class="product-price">
+                                    <span class="price-current">199.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 1 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+1"
+                                    alt="Sản phẩm 1">
+                                <span class="discount-badge">-20%</span>
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Áo Thun Basic Trơn Màu</h4>
+                                <p class="product-description">Cotton 100%, thoáng mát</p>
+                                <div class="product-price">
+                                    <span class="price-current">159.000 ₫</span>
+                                    <span class="price-original">199.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+2"
+                                    alt="Sản phẩm 2">
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Áo Sơ Mi Dài Tay Oxford</h4>
+                                <p class="product-description">Chất liệu Oxford cao cấp</p>
+                                <div class="product-price">
+                                    <span class="price-current">299.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+3"
+                                    alt="Sản phẩm 3">
+                                <span class="discount-badge">New</span>
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Áo Polo Cotton Pique</h4>
+                                <p class="product-description">Form regular fit thoải mái</p>
+                                <div class="product-price">
+                                    <span class="price-current">249.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+4"
+                                    alt="Sản phẩm 4">
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Quần Jeans Slimfit Xanh</h4>
+                                <p class="product-description">Denim cao cấp co giãn</p>
+                                <div class="product-price">
+                                    <span class="price-current">399.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 5 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+5"
+                                    alt="Sản phẩm 5">
+                                <span class="discount-badge">-15%</span>
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Quần Kaki Công Sở</h4>
+                                <p class="product-description">Form straight chuẩn</p>
+                                <div class="product-price">
+                                    <span class="price-current">339.000 ₫</span>
+                                    <span class="price-original">399.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 6 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Product+6"
+                                    alt="Sản phẩm 6">
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">Quần Short Thể Thao</h4>
+                                <p class="product-description">Vải mềm mại, thoáng khí</p>
+                                <div class="product-price">
+                                    <span class="price-current">199.000 ₫</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm btn-secondary view-product">Xem Chi Tiết</button>
+                                    <button class="btn btn-sm btn-primary add-to-cart">Thêm Giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thêm nhiều product cards tương tự... -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (giống index.html) -->
+    <footer>
+        <div class="container">
+            <div>
+                <h4>Về Urban Gent</h4>
+                <ul>
+                    <li><a href="about.html">Giới thiệu</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Hỗ trợ</h4>
+                <ul>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                    <li><a href="#">Giao hàng</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Urban Gent. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
