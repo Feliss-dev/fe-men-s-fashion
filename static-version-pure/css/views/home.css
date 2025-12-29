@@ -10,7 +10,11 @@
   margin-bottom: var(--spacing-3xl);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
 }
 
 /* Slider Container */
@@ -89,11 +93,11 @@
   font-weight: 600; /* Thêm độ đậm cho chữ rõ hơn */
   transition: all 0.3s ease;
   animation: slideInUp 0.8s ease-out 0.4s both;
-  
+
   /* ĐỒNG BỘ GIAO DIỆN VỚI NÚT DƯỚI */
   background-color: transparent; /* Nền trong suốt */
-  color: white;                  /* Chữ trắng */
-  border: 2px solid white;       /* Viền trắng dày 2px */
+  color: white; /* Chữ trắng */
+  border: 2px solid white; /* Viền trắng dày 2px */
   border-radius: var(--radius-md); /* Bo góc giống các nút khác */
 }
 
@@ -101,12 +105,12 @@
 .hero-cta:hover {
   transform: translateY(-2px); /* Bay lên nhẹ */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Đổ bóng */
-  
+
   /* ĐỔI MÀU KHI DI CHUỘT VÀO */
-  background-color: white;       /* Nền chuyển sang trắng */
+  background-color: white; /* Nền chuyển sang trắng */
   color: var(--color-primary) !important; /* Chữ chuyển màu chủ đạo (ép buộc) */
-  border-color: white;           /* Giữ nguyên viền trắng */
-  text-decoration: none;         /* Bỏ gạch chân nếu có */
+  border-color: white; /* Giữ nguyên viền trắng */
+  text-decoration: none; /* Bỏ gạch chân nếu có */
 }
 
 /* Slider Controls */
@@ -197,7 +201,7 @@
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Align items vertically */
   justify-content: flex-start; /* Add space between title and subcategories */
-  gap: var(--spacing-2xl); 
+  gap: var(--spacing-2xl);
   margin-bottom: var(--spacing-2xl);
   border-bottom: 2px solid var(--color-primary);
   padding-bottom: var(--spacing-lg);
@@ -222,8 +226,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
-  margin-bottom: 0; 
-  
+  margin-bottom: 0;
 }
 
 .subcategory-btn {
@@ -382,15 +385,15 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  
+
   /* Trạng thái ẩn mặc định */
   opacity: 0;
   visibility: hidden; /* QUAN TRỌNG: Ẩn hoàn toàn khỏi sự kiện chuột */
-  z-index: 0;         /* Đẩy xuống dưới */
-  
+  z-index: 0; /* Đẩy xuống dưới */
+
   /* Thêm transition cho cả visibility để mượt mà */
   transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -402,7 +405,7 @@
   /* Trạng thái hiện */
   opacity: 1;
   visibility: visible; /* Cho phép click chuột */
-  z-index: 10;         /* Đưa lên trên cùng */
+  z-index: 10; /* Đưa lên trên cùng */
 }
 
 .featured-product-card {
@@ -507,6 +510,142 @@
   border-radius: 6px;
 }
 
+/* Category Carousel Wrapper - Flexbox với prev/next buttons */
+.category-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-2xl);
+  position: relative;
+}
+
+/* Category Products Container */
+.category-products {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-lg);
+  overflow-x: hidden; /* Hide scrollbar completely */
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  /* Grab cursor for desktop */
+  cursor: grab;
+  user-select: none;
+  padding: var(--spacing-xs) 0;
+}
+
+.category-products:active {
+  cursor: grabbing;
+}
+
+/* Product Cards in Carousel */
+.category-products .product-card {
+  background: var(--color-background);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  padding: var(--spacing-sm);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  /* Desktop: 3 items visible, mobile: 1 item */
+  flex: 0 0 calc(33.333% - (var(--spacing-lg) * 2 / 3));
+  min-width: calc(33.333% - (var(--spacing-lg) * 2 / 3));
+  scroll-snap-align: start;
+}
+
+.category-products .product-card:hover {
+  background: #f9f9f9;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.category-products .product-image {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.category-products .product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-products .product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.category-products .product-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.category-products .product-price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: var(--spacing-xs) 0 0 0;
+}
+
+/* Navigation Buttons - Side by side */
+.category-slider-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.category-slider-btn:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.category-slider-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+/* Smooth transitions */
+.category-products.slide-next,
+.category-products.slide-prev {
+  scroll-behavior: smooth;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .category-products .product-card {
@@ -518,32 +657,32 @@
   .category-products {
     flex-direction: column;
   }
-  
+
   .category-products .product-card {
     flex: 1 1 100%;
     max-width: 100%;
     flex-direction: row;
   }
-  
+
   .category-products .product-image {
     width: 120px;
     height: 150px;
   }
-  
+
   .featured-product-card {
     flex-direction: column;
     padding: var(--spacing-2xl);
   }
-  
+
   .featured-product-image {
     width: 100%;
     height: 300px;
   }
-  
+
   .featured-product-info {
     width: 100%;
   }
-  
+
   .featured-product-name {
     font-size: 1.5rem;
   }
@@ -551,7 +690,11 @@
 
 /* Call to Action Section */
 .cta-section {
-  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary) 0%,
+    var(--color-primary) 100%
+  );
   color: white;
   padding: var(--spacing-3xl) 0;
   text-align: center;
@@ -575,7 +718,6 @@
   padding: var(--spacing-md) var(--spacing-2xl);
   font-size: 1.1rem;
   border: 2px solid white; /* Thêm viền trắng cho đẹp */
-  background-color: transparent; /* Nền trong suốt */
 }
 
 /* THÊM MỚI ĐOẠN NÀY VÀO CUỐI FILE HOẶC SAU class .cta-section .btn */
@@ -583,9 +725,8 @@
   background-color: white;
   color: var(--color-primary) !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -686,35 +827,35 @@
     -webkit-overflow-scrolling: touch; /* Smooth scroll trên iOS */
     scrollbar-width: thin; /* Firefox */
   }
-  
+
   /* Ẩn scrollbar nhưng vẫn cuộn được */
   .category-subcategories::-webkit-scrollbar {
     height: 2px;
   }
-  
+
   .subcategory-btn {
     padding: 6px 12px;
     font-size: 0.7rem;
     white-space: nowrap; /* Không wrap text */
     flex-shrink: 0;
   }
-  
+
   /* Indicator để biết có thể scroll */
   .category-subcategories::after {
-    content: '';
+    content: "";
     display: block;
     width: 1px;
     height: 1px;
     flex-shrink: 0;
   }
-  
+
   /* Thêm padding cho product card */
   .category-products .product-card {
     flex: 0 0 100%; /* Full width trên mobile rất nhỏ */
     max-width: 100%;
     min-width: 250px;
   }
-  
+
   .category-products {
     gap: var(--spacing-md);
   }
