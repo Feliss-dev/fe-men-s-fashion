@@ -221,7 +221,25 @@ export async function fetchProducts() {
 export async function fetchCategories() {
   return getAPI('/categories');
 }
+/**
+ * Fetch trending products (best sellers this year)
+ * Sorted by salesThisYear in descending order, limited to 10
+ * 
+ * @returns {Promise<Array<Product>>} Top 10 trending products
+ */
+export async function fetchTrendingProducts() {
+  return getAPI('/products?orderBy=salesThisYear&order=desc&limit=10&p=1');
+}
 
+/**
+ * Fetch best-selling products (best sellers this month)
+ * Sorted by salesThisMonth in descending order, limited to 10
+ * 
+ * @returns {Promise<Array<Product>>} Top 10 best-selling products this month
+ */
+export async function fetchBestSellingProducts() {
+  return getAPI('/products?orderBy=salesThisMonth&order=desc&limit=10&p=1');
+}
 export default {
   getAPI,
   postAPI,

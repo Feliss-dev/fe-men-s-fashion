@@ -8,7 +8,13 @@ import {
   getCategoryPlaceholder,
   getPlaceholderImage,
 } from "../utils/placeholder.js";
-import { getAPI } from "../core/api.js";
+import {
+  getAPI,
+  fetchProducts,
+  fetchCategories,
+  fetchTrendingProducts,
+  fetchBestSellingProducts,
+} from "../core/api.js";
 import { formatPrice } from "../utils/format.js";
 import {
   setupProductEvents,
@@ -87,6 +93,66 @@ function renderCategoryProducts(products) {
   `
     )
     .join("");
+}
+
+/**
+ * Render product grid for trending/best-selling sections
+ * @param {Array} products - Products to display
+ * @returns {string} HTML string
+ */
+function renderProductGrid(products) {
+  if (products.length === 0) {
+    return '<p class="empty-message">Không có sản phẩm nào.</p>';
+  }
+
+  return `
+    <div class="product-grid">
+      ${products
+        .map(
+          (product) => `
+        <div class="product-card" data-product-id="${product.id}">
+          <div class="product-image">
+            <img src="${product.images?.[0]}" alt="${product.name}">
+            ${
+              product.tags?.includes("new")
+                ? '<span class="product-badge badge-new">Mới</span>'
+                : ""
+            }
+            ${
+              product.tags?.includes("sale")
+                ? '<span class="product-badge badge-sale">Giảm giá</span>'
+                : ""
+            }
+            ${
+              product.tags?.includes("sold-out")
+                ? '<span class="product-badge badge-sold-out">Hết hàng</span>'
+                : ""
+            }
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">${product.name}</h4>
+            <p class="product-price">
+              ${formatPrice(product.price)}
+              ${
+                product.originalPrice
+                  ? `<span class="original-price">${formatPrice(
+                      product.originalPrice
+                    )}</span>`
+                  : ""
+              }
+            </p>
+            <div class="product-stats">
+              <span class="sales-count">🔥 Đã bán: ${
+                product.salesThisMonth || 0
+              }</span>
+            </div>
+          </div>
+        </div>
+      `
+        )
+        .join("")}
+    </div>
+  `;
 }
 
 /**
@@ -171,6 +237,29 @@ export async function render() {
   let allProducts = [];
   let allCategories = [];
 
+  let trendingProducts = [];
+  let bestSellingProducts = [];
+
+  try {
+    [trendingProducts, bestSellingProducts] = await Promise.all([
+      fetchTrendingProducts(),
+      fetchBestSellingProducts(),
+    ]);
+    console.log(
+      "[HomeView] Loaded trending products:",
+      trendingProducts.length
+    );
+    console.log(
+      "[HomeView] Loaded best-selling products:",
+      bestSellingProducts.length
+    );
+  } catch (error) {
+    console.error(
+      "[HomeView] Error loading trending/best-selling products:",
+      error
+    );
+  }
+
   try {
     [allProducts, allCategories] = await Promise.all([
       getAPI("/products"),
@@ -253,6 +342,8 @@ export async function render() {
       </div>
     </section>
 
+   
+
     <!-- Featured Categories Section - 3 Columns -->
     <section class="featured-categories">
       <div class="container">
@@ -326,6 +417,28 @@ export async function render() {
           </div>
           
         </div>
+      </div>
+    </section>
+
+     <!-- Trending Products Section -->
+    <section class="trending-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">🔥 Sản Phẩm Thịnh Hành Năm Nay</h2>
+          <p class="section-subtitle">Top 10 sản phẩm bán chạy nhất trong năm</p>
+        </div>
+        ${renderProductGrid(trendingProducts)}
+      </div>
+    </section>
+
+    <!-- Best Selling Products Section -->
+    <section class="best-selling-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">⭐ Bán Chạy Nhất Tháng Này</h2>
+          <p class="section-subtitle">Top 10 sản phẩm được yêu thích nhất tháng này</p>
+        </div>
+        ${renderProductGrid(bestSellingProducts)}
       </div>
     </section>
 
