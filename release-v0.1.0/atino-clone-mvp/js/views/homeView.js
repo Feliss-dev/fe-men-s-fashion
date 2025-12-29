@@ -16,6 +16,7 @@ import {
 } from "../components/ProductEvents.js";
 import { setupBannerSlider } from "../components/BannerSlider.js";
 import { setupProductSlider } from "../components/ProductSlider.js";
+import { setupCategoryProductSliders } from "../components/CategoryProductSlider.js";
 
 // Store original products for each category
 let categoryProductsCache = {
@@ -23,6 +24,9 @@ let categoryProductsCache = {
   bottoms: [],
   accessories: [],
 };
+
+// Store slider instances
+let categorySliders = {};
 
 /**
  * Get subcategories for a specific parent category
@@ -54,7 +58,7 @@ function getSubcategoriesByParent(allCategories, parentSlug) {
 }
 
 /**
- * Render products for a category section
+ * Render products for a category section - ALL PRODUCTS
  * @param {Array} products - Products to display
  * @returns {string} HTML string
  */
@@ -67,8 +71,8 @@ function renderCategoryProducts(products) {
     `;
   }
 
+  // Render ALL products for carousel
   return products
-    .slice(0, 3)
     .map(
       (product) => `
     <div class="product-card" data-product-id="${product.id}">
@@ -108,25 +112,52 @@ function setupSubcategoryFilters(category, allProducts) {
       subcategoryButtons.forEach((b) => b.classList.remove("active"));
       e.currentTarget.classList.add("active");
 
-      // Filter products
-      let filteredProducts = allProducts;
-      if (targetSubcategory !== "all") {
-        filteredProducts = allProducts.filter(
+      // Sort products: prioritize selected subcategory, keep others after
+      let sortedProducts;
+      if (targetSubcategory === "all") {
+        // Show all products in original order
+        sortedProducts = allProducts;
+      } else {
+        // Prioritize matching subcategory, then show others
+        const matchingProducts = allProducts.filter(
           (p) => p.subCategory === targetSubcategory
         );
+        const otherProducts = allProducts.filter(
+          (p) => p.subCategory !== targetSubcategory
+        );
+        sortedProducts = [...matchingProducts, ...otherProducts];
       }
 
-      // Re-render products
-      productsContainer.innerHTML = renderCategoryProducts(filteredProducts);
-
-      // Re-setup product events for new cards
-      setupProductEvents();
+      // Update slider with sorted products
+      if (categorySliders[category]) {
+        categorySliders[category].setProducts(sortedProducts);
+      }
 
       console.log(
-        `[HomeView] Filtered ${category} by subcategory: ${targetSubcategory}`,
-        filteredProducts.length
+        `[HomeView] Sorted ${category} by subcategory: ${targetSubcategory}`,
+        `(${
+          sortedProducts.filter((p) => p.subCategory === targetSubcategory)
+            .length
+        } prioritized + ${
+          sortedProducts.filter((p) => p.subCategory !== targetSubcategory)
+            .length
+        } others)`
       );
     });
+  });
+
+  // Listen to renderAllProducts event from slider
+  sectionElement.addEventListener("renderAllProducts", (e) => {
+    const allProducts = e.detail.products;
+    productsContainer.innerHTML = renderCategoryProducts(allProducts);
+    setupProductEvents();
+  });
+
+  // Listen to productsChange event (kept for backward compatibility)
+  sectionElement.addEventListener("productsChange", (e) => {
+    const products = e.detail.products;
+    productsContainer.innerHTML = renderCategoryProducts(products);
+    setupProductEvents();
   });
 }
 
@@ -246,6 +277,7 @@ export async function render() {
             <div class="category-products">
               ${renderCategoryProducts(categoryProductsCache.tops)}
             </div>
+            <!-- Slider controls will be inserted here -->
             <button class="btn btn-secondary category-view-more" data-category="tops">Xem Thêm</button>
           </div>
           
@@ -267,6 +299,7 @@ export async function render() {
             <div class="category-products">
               ${renderCategoryProducts(categoryProductsCache.bottoms)}
             </div>
+            <!-- Slider controls will be inserted here -->
             <button class="btn btn-secondary category-view-more" data-category="bottoms">Xem Thêm</button>
           </div>
           
@@ -288,6 +321,7 @@ export async function render() {
             <div class="category-products">
               ${renderCategoryProducts(categoryProductsCache.accessories)}
             </div>
+            <!-- Slider controls will be inserted here -->
             <button class="btn btn-secondary category-view-more" data-category="accessories">Xem Thêm</button>
           </div>
           
@@ -366,6 +400,9 @@ export async function render() {
   // Setup product events
   setCurrentProducts(allProducts);
   setupProductEvents();
+
+  // Setup category product sliders
+  categorySliders = setupCategoryProductSliders(categoryProductsCache);
 
   // Setup subcategory filters for each category
   setupSubcategoryFilters("tops", categoryProductsCache.tops);

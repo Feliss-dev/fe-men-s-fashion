@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Gent - Trang Chủ (Static)</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <div class="container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="Urban Gent Logo" class="logo-image">
+                <span class="logo-text">Urban Gent</span>
+            </a>
+
+            <!-- Navigation -->
+            <nav id="mainNav">
+                <a href="index.html" class="nav-link">Trang chủ</a>
+                <a href="shop.html" class="nav-link">Cửa hàng</a>
+                <a href="about.html" class="nav-link">Giới thiệu</a>
+                <a href="contact.html" class="nav-link">Liên hệ</a>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <!-- Search Box -->
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm kiếm..." aria-label="Search products">
+                    <button aria-label="Search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Cart Icon -->
+                <button class="cart-icon" aria-label="Open cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="badge">3</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main>
+        <!-- Hero Section - Banner Slider -->
+        <section class="hero-section">
+            <div class="hero-slider">
+                <!-- Slide 1 (Active) -->
+                <div class="slide active" style="background-image: url('assets/images/banner/banner-1.jpeg');">
+                    <div class="slide-overlay"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">Thời Trang Nam Hiện Đại</h1>
+                        <p class="hero-subtitle">Khám phá bộ sưu tập mới nhất với phong cách trẻ trung, năng động</p>
+                        <a href="shop.html" class="btn btn-primary hero-cta">Mua Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide" style="background-image: url('assets/images/banner/banner-2.jpeg');">
+                    <div class="slide-overlay"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">Giảm Giá Đến 50%</h1>
+                        <p class="hero-subtitle">Sale cuối năm - Cơ hội mua sắm với giá tốt nhất</p>
+                        <a href="shop.html" class="btn btn-primary hero-cta">Xem Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide" style="background-image: url('assets/images/banner/banner-3.jpeg');">
+                    <div class="slide-overlay"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">Bộ Sưu Tập Thu Đông</h1>
+                        <p class="hero-subtitle">Ấm áp và phong cách cho mùa lạnh</p>
+                        <a href="shop.html" class="btn btn-primary hero-cta">Khám Phá</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Controls (Dots) -->
+            <div class="slider-controls">
+                <button class="slider-dot active" aria-label="Slide 1"></button>
+                <button class="slider-dot" aria-label="Slide 2"></button>
+                <button class="slider-dot" aria-label="Slide 3"></button>
+            </div>
+        </section>
+
+        <!-- Featured Categories Section -->
+        <section class="featured-categories">
+            <div class="container">
+                <h2 class="section-title">Danh Mục Nổi Bật</h2>
+
+                <div class="categories-wrapper">
+                    <!-- Category 1: Áo -->
+                    <div class="category-section" data-category="tops">
+                        <div class="category-header">
+                            <div>
+                                <h3 class="category-title">Áo</h3>
+                                <p class="category-subtitle">T-Shirt, Sơ Mi, Polo</p>
+                            </div>
+
+                            <!-- Subcategory Filters -->
+                            <div class="category-subcategories">
+                                <button class="subcategory-btn all active">Tất cả</button>
+                                <button class="subcategory-btn">Áo Thun</button>
+                                <button class="subcategory-btn">Áo Sơ Mi</button>
+                                <button class="subcategory-btn">Áo Polo</button>
+                            </div>
+                        </div>
+
+                        <!-- Products Grid -->
+                        <div class="category-products">
+                            <!-- Product Card 1 -->
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Ao+Thun+Basic"
+                                        alt="Áo Thun Basic">
+                                    <span class="product-card-badge">-20%</span>
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">Áo Thun Basic Trơn</h4>
+                                    <div class="product-price">
+                                        <span class="price-current">159.000 ₫</span>
+                                        <span class="price-original">199.000 ₫</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 2 -->
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Ao+So+Mi"
+                                        alt="Áo Sơ Mi">
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">Áo Sơ Mi Dài Tay</h4>
+                                    <div class="product-price">
+                                        <span class="price-current">299.000 ₫</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 3 -->
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Ao+Polo"
+                                        alt="Áo Polo">
+                                    <span class="product-card-badge">New</span>
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">Áo Polo Cotton</h4>
+                                    <div class="product-price">
+                                        <span class="price-current">249.000 ₫</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- View More Button -->
+                        <a href="shop.html?category=tops" class="btn btn-secondary category-view-more">
+                            Xem Tất Cả Áo →
+                        </a>
+                    </div>
+
+                    <!-- Category 2: Quần -->
+                    <div class="category-section" data-category="bottoms">
+                        <div class="category-header">
+                            <div>
+                                <h3 class="category-title">Quần</h3>
+                                <p class="category-subtitle">Jeans, Kaki, Short</p>
+                            </div>
+
+                            <div class="category-subcategories">
+                                <button class="subcategory-btn all active">Tất cả</button>
+                                <button class="subcategory-btn">Quần Jeans</button>
+                                <button class="subcategory-btn">Quần Kaki</button>
+                                <button class="subcategory-btn">Quần Short</button>
+                            </div>
+                        </div>
+
+                        <div class="category-products">
+                            <!-- Product Card 1 -->
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Quan+Jeans"
+                                        alt="Quần Jeans">
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">Quần Jeans Slimfit</h4>
+                                    <div class="product-price">
+                                        <span class="price-current">399.000 ₫</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 2 -->
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Quan+Kaki"
+                                        alt="Quần Kaki">
+                                    <span class="product-card-badge">-15%</span>
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">Quần Kaki Công Sở</h4>
+                                    <div class="product-price">
+                                        <span class="price-current">339.000 ₫</span>
+                                        <span class="price-original">399.000 ₫</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 3 -->
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Quan+Short"
+                                        alt="Quần Short">
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">Quần Short Thể Thao</h4>
+                                    <div class="product-price">
+                                        <span class="price-current">199.000 ₫</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="shop.html?category=bottoms" class="btn btn-secondary category-view-more">
+                            Xem Tất Cả Quần →
+                        </a>
+                    </div>
+
+                    <!-- Category 3: Phụ Kiện -->
+                    <div class="category-section" data-category="accessories">
+                        <div class="category-header">
+                            <div>
+                                <h3 class="category-title">Phụ Kiện</h3>
+                                <p class="category-subtitle">Giày, Túi, Nón</p>
+                            </div>
+
+                            <div class="category-subcategories">
+                                <button class="subcategory-btn all active">Tất cả</button>
+                                <button class="subcategory-btn">Giày</button>
+                                <button class="subcategory-btn">Túi</button>
+                                <button class="subcategory-btn">Nón</button>
+                            </div>
+                        </div>
+
+                        <div class="category-products">
+                            <!-- Product Card 1 -->
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Giay+Sneaker"
+                                        alt="Giày Sneaker">
+                                    <span class="product-card-badge">Hot</span>
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">Giày Sneaker Trắng</h4>
+                                    <div class="product-price">
+                                        <span class="price-current">599.000 ₫</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 2 -->
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Tui+Xach"
+                                        alt="Túi Xách">
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">Túi Xách Da Nam</h4>
+                                    <div class="product-price">
+                                        <span class="price-current">799.000 ₫</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 3 -->
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="https://via.placeholder.com/300x400/f0f0f0/666666?text=Non+Luoi+Trai"
+                                        alt="Nón Lưỡi Trai">
+                                </div>
+                                <div class="product-info">
+                                    <h4 class="product-name">Nón Lưỡi Trai Basic</h4>
+                                    <div class="product-price">
+                                        <span class="price-current">149.000 ₫</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="shop.html?category=accessories" class="btn btn-secondary category-view-more">
+                            Xem Tất Cả Phụ Kiện →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Bạn Cần Hỗ Trợ?</h2>
+                <p>Đội ngũ chăm sóc khách hàng của chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7</p>
+                <a href="contact.html" class="btn btn-primary">Liên Hệ Ngay</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="container">
+            <div>
+                <h4>Về Urban Gent</h4>
+                <ul>
+                    <li><a href="about.html">Giới thiệu</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                    <li><a href="#">Báo chí</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Hỗ trợ</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                    <li><a href="#">Giao hàng</a></li>
+                    <li><a href="#">Đổi trả</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Chính sách</h4>
+                <ul>
+                    <li><a href="#">Bảo mật</a></li>
+                    <li><a href="#">Điều khoản</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kết nối</h4>
+                <ul>
+                    <li><a href="#" class="social-link-footer">Facebook</a></li>
+                    <li><a href="#" class="social-link-footer">Instagram</a></li>
+                    <li><a href="#" class="social-link-footer">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Urban Gent. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
