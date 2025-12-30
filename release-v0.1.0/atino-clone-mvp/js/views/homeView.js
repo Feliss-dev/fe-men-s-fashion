@@ -3,11 +3,11 @@
  */
 
 import { navigate } from "../core/router.js";
-import {
-  getHeroBannerPlaceholder,
-  getCategoryPlaceholder,
-  getPlaceholderImage,
-} from "../utils/placeholder.js";
+// import {
+//   getHeroBannerPlaceholder,
+//   getCategoryPlaceholder,
+//   getPlaceholderImage,
+// } from "../utils/placeholder.js";
 import {
   getAPI,
   fetchProducts,
@@ -98,12 +98,16 @@ function renderCategoryProducts(products) {
 /**
  * Render product grid for trending/best-selling sections
  * @param {Array} products - Products to display
+ * @param {string} salesType - Type of sales data to display ('year' or 'month')
  * @returns {string} HTML string
  */
-function renderProductGrid(products) {
+function renderProductGrid(products, salesType = 'month') {
   if (products.length === 0) {
     return '<p class="empty-message">Không có sản phẩm nào.</p>';
   }
+
+  const salesField = salesType === 'year' ? 'salesThisYear' : 'salesThisMonth';
+  const salesLabel = salesType === 'year' ? 'Đã bán' : 'Đã bán';
 
   return `
     <div class="product-grid">
@@ -142,8 +146,8 @@ function renderProductGrid(products) {
               }
             </p>
             <div class="product-stats">
-              <span class="sales-count">🔥 Đã bán: ${
-                product.salesThisMonth || 0
+              <span class="sales-count">🔥 ${salesLabel}: ${
+                product[salesField] || 0
               }</span>
             </div>
           </div>
@@ -427,7 +431,7 @@ export async function render() {
           <h2 class="section-title">🔥 Sản Phẩm Thịnh Hành Năm Nay</h2>
           <p class="section-subtitle">Top 10 sản phẩm bán chạy nhất trong năm</p>
         </div>
-        ${renderProductGrid(trendingProducts)}
+      ${renderProductGrid(trendingProducts, 'year')}
       </div>
     </section>
 
@@ -438,7 +442,7 @@ export async function render() {
           <h2 class="section-title">⭐ Bán Chạy Nhất Tháng Này</h2>
           <p class="section-subtitle">Top 10 sản phẩm được yêu thích nhất tháng này</p>
         </div>
-        ${renderProductGrid(bestSellingProducts)}
+        ${renderProductGrid(bestSellingProducts, 'month')}
       </div>
     </section>
 

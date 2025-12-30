@@ -116,8 +116,7 @@ header .container > * {
   height: 40px;
   transition: all var(--transition-fast);
   
-  /* --- THÊM DÒNG NÀY ĐỂ SỬA LỖI --- */
-  margin: 0; /* Xóa bỏ margin-bottom bị dính từ file components.css */
+  margin: 0;
 }
 
 .search-box:focus-within {
